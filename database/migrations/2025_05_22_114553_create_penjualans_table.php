@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('id_member');
-            $table->string('password');
+            $table->unsignedInteger('id_barang'); // Asumsi foreign key dari tabel barang
+            $table->unsignedInteger('id_member'); // Asumsi foreign key dari tabel members
+            $table->string('jumlah'); // Bisa diganti integer jika data angka
+            $table->string('total'); 
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('penjualans');
     }
 };
